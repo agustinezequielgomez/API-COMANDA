@@ -1,0 +1,270 @@
+{
+	"info": {
+		"_postman_id": "468f759e-c3a0-4cb0-9d00-5db45bf007a6",
+		"name": "PHPTemplate",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"username\":\"frnkq\",\n\t\"password\":\"root\",\n\t\"role\":\"admin\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:90/auth/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "90",
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"username\":\"user\",\n\t\"password\":\"pass\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:90/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "90",
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "Entity",
+					"item": [
+						{
+							"name": "GetAll",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "token",
+										"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NjEzODM4NTUsImV4cCI6MTU2MTQ0Mzg1NSwiYXVkIjoiODhhNTk1ZTA2ZWQyNWMzNDhhNzhiYTA2NjIyZTA5Y2Q2OWNmMTE4MyIsImRhdGEiOnsiaWQiOjEsInVzZXJuYW1lIjoiZnJua3EiLCJyb2xlIjoiYWRtaW4ifSwiYXBwIjoiRnJhbmNvIENhbmV2YWxpIn0.9g1ycIQGACszhEvbD5i9XrM7dXUw83dGOFF4qWgqSmg",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:90/admin/empleados/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "90",
+									"path": [
+										"admin",
+										"empleados",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "token",
+										"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NjEzODM4NTUsImV4cCI6MTU2MTQ0Mzg1NSwiYXVkIjoiODhhNTk1ZTA2ZWQyNWMzNDhhNzhiYTA2NjIyZTA5Y2Q2OWNmMTE4MyIsImRhdGEiOnsiaWQiOjEsInVzZXJuYW1lIjoiZnJua3EiLCJyb2xlIjoiYWRtaW4ifSwiYXBwIjoiRnJhbmNvIENhbmV2YWxpIn0.9g1ycIQGACszhEvbD5i9XrM7dXUw83dGOFF4qWgqSmg",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "nombre",
+											"value": "juan",
+											"type": "text"
+										},
+										{
+											"key": "apellido",
+											"value": "perez",
+											"type": "text"
+										},
+										{
+											"key": "dni",
+											"value": "32229212",
+											"type": "text"
+										},
+										{
+											"key": "image",
+											"value": null,
+											"type": "file"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:90/admin/empleados/create",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "90",
+									"path": [
+										"admin",
+										"empleados",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "token",
+										"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NjEzODM4NTUsImV4cCI6MTU2MTQ0Mzg1NSwiYXVkIjoiODhhNTk1ZTA2ZWQyNWMzNDhhNzhiYTA2NjIyZTA5Y2Q2OWNmMTE4MyIsImRhdGEiOnsiaWQiOjEsInVzZXJuYW1lIjoiZnJua3EiLCJyb2xlIjoiYWRtaW4ifSwiYXBwIjoiRnJhbmNvIENhbmV2YWxpIn0.9g1ycIQGACszhEvbD5i9XrM7dXUw83dGOFF4qWgqSmg",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "nombre",
+											"value": "maximo",
+											"type": "text"
+										},
+										{
+											"key": "apellido",
+											"value": "cosetti",
+											"type": "text"
+										},
+										{
+											"key": "dni",
+											"value": "3927812",
+											"type": "text"
+										},
+										{
+											"key": "image",
+											"value": null,
+											"type": "file"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:90/admin/empleados/update/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "90",
+									"path": [
+										"admin",
+										"empleados",
+										"update",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "token",
+										"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NjEzODM4NTUsImV4cCI6MTU2MTQ0Mzg1NSwiYXVkIjoiODhhNTk1ZTA2ZWQyNWMzNDhhNzhiYTA2NjIyZTA5Y2Q2OWNmMTE4MyIsImRhdGEiOnsiaWQiOjEsInVzZXJuYW1lIjoiZnJua3EiLCJyb2xlIjoiYWRtaW4ifSwiYXBwIjoiRnJhbmNvIENhbmV2YWxpIn0.9g1ycIQGACszhEvbD5i9XrM7dXUw83dGOFF4qWgqSmg",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"id\":1\n}"
+								},
+								"url": {
+									"raw": "http://localhost:90/admin/empleados/delete",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "90",
+									"path": [
+										"admin",
+										"empleados",
+										"delete"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				}
+			]
+		}
+	]
+}

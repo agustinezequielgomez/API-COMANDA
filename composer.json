@@ -1,0 +1,16 @@
+{
+    "require": {
+        "slim/slim": "*",
+        "illuminate/database": "*",
+        "firebase/php-jwt": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Models\\": "src/Models",
+            "Helpers\\": "src/Helpers",
+            "Routes\\": "src/Routes",
+            "Controllers\\": "src/Controllers",
+            "Middleware\\": "src/Middleware"
+        }
+    }
+}
