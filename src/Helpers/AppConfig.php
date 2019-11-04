@@ -6,10 +6,10 @@ class AppConfig
 {
     public static $illuminateDb = [
         'driver' => 'mysql',
-        'host' => 'localhost',
-        'database' => 'comanda',
-        'username' => 'root',
-        'password' => '',
+        'host' => 'remotemysql.com:3306',
+        'database' => 'cW255Z3D49',
+        'username' => 'cW255Z3D49',
+        'password' => 'Eacp5iw7k9',
         'charset' => 'utf8',
         'collation' => 'utf8_unicode_ci',
         'prefix' => ''
