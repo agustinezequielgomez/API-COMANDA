@@ -42,7 +42,7 @@ class MWComanda
     {
         var_dump($request->getUri()->getPath());
         die();
-        if($request->getUri()->getPath()=='/Pedidos/TiempoEstimado' || starts_with($request->getUri()->getPath(), 'Empleados/') && $request->getMethod()=='GET'&&$request->getQueryParam('login')=='true')
+        if($request->getUri()->getPath()=='/Pedidos/TiempoEstimado' || starts_with($request->getUri()->getPath(), '/Empleados/') && $request->getMethod()=='GET'&&$request->getQueryParam('login')=='true')
         {
             $response = $next($request,$response);
             return $response;
@@ -62,13 +62,13 @@ class MWComanda
 
     function MWVerificarCredenciales(Request $request,Response $response,$next)
     {
-        if($request->getUri()->getPath()=='/Pedidos/TiempoEstimado' || starts_with($request->getUri()->getPath(), 'Empleados/') && $request->getMethod()=='GET'&&$request->getQueryParam('login')=='true')
+        if($request->getUri()->getPath()=='/Pedidos/TiempoEstimado' || starts_with($request->getUri()->getPath(), '/Empleados/') && $request->getMethod()=='GET'&&$request->getQueryParam('login')=='true')
         {
             $response = $next($request,$response);
             return $response;
         }
 
-        if (starts_with($request->getUri()->getPath(), 'Empleados/') && $request->getMethod()=='GET'&&$request->getQueryParam('login')=='true')
+        if (starts_with($request->getUri()->getPath(), '/Empleados/') && $request->getMethod()=='GET'&&$request->getQueryParam('login')=='true')
         {
             $response = $next($request, $response);
             return $response;
@@ -78,7 +78,7 @@ class MWComanda
         switch($data->tipo)
         {
             case "administrador":
-            if($request->getUri()->getPath()=='/Empleados/'|| starts_with($request->getUri()->getPath(),'/Empleados/')|| $request->getUri()->getPath()=='Registros/'||$request->getUri()->getPath()=='Menu/' || $request->getUri()->getPath()=='/Mesa/' || starts_with($request->getUri()->getPath(),'/Consultas/' ))
+            if($request->getUri()->getPath()=='/Empleados/'|| starts_with($request->getUri()->getPath(),'/Empleados/')|| starts_with($request->getUri()->getPath(), '/Registros/')||starts_with($request->getUri()->getPath(), '/Menu/') || starts_with($request->getUri()->getPath(),'/Mesa/') || starts_with($request->getUri()->getPath(),'/Consultas/' ))
             {
                 $response = $next($request,$response);
             }
@@ -102,7 +102,7 @@ class MWComanda
             break;
 
             case "mozo":
-            if(starts_with($request->getUri()->getPath(),'Pedidos/') && $request->getUri()->getPath()!='/Pedidos/TiempoEstimado' || $request->getUri()->getPath() === 'Menu/' && $request->getMethod() == "GET" || $request->getUri()->getPath() === 'Mesa/' && $request->getMethod() == "GET")
+            if(starts_with($request->getUri()->getPath(),'/Pedidos/') && $request->getUri()->getPath()!='/Pedidos/TiempoEstimado' || starts_with($request->getUri()->getPath(), '/Menu/') && $request->getMethod() == "GET" || starts_with($request->getUri()->getPath(), '/Mesa/') && $request->getMethod() == "GET")
             {
                 $response = $next($request,$response);
             }
