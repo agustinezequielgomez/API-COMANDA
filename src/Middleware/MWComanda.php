@@ -40,7 +40,7 @@ class MWComanda
     
     function MWVerificarToken(Request $request,Response $response,$next)
     {
-        if($request->getUri()->getPath()=='/Pedidos/TiempoEstimado' || starts_wtih($request->getUri()->getPath(), 'Empleados/') && $request->getMethod()=='GET'&&$request->getQueryParam('login')=='true')
+        if($request->getUri()->getPath()=='/Pedidos/TiempoEstimado' || starts_with($request->getUri()->getPath(), 'Empleados/') && $request->getMethod()=='GET'&&$request->getQueryParam('login')=='true')
         {
             $response = $next($request,$response);
             return $response;
@@ -60,13 +60,13 @@ class MWComanda
 
     function MWVerificarCredenciales(Request $request,Response $response,$next)
     {
-        if($request->getUri()->getPath()=='/Pedidos/TiempoEstimado' || starts_wtih($request->getUri()->getPath(), 'Empleados/') && $request->getMethod()=='GET'&&$request->getQueryParam('login')=='true')
+        if($request->getUri()->getPath()=='/Pedidos/TiempoEstimado' || starts_with($request->getUri()->getPath(), 'Empleados/') && $request->getMethod()=='GET'&&$request->getQueryParam('login')=='true')
         {
             $response = $next($request,$response);
             return $response;
         }
 
-        if (starts_wtih($request->getUri()->getPath(), 'Empleados/') && $request->getMethod()=='GET'&&$request->getQueryParam('login')=='true')
+        if (starts_with($request->getUri()->getPath(), 'Empleados/') && $request->getMethod()=='GET'&&$request->getQueryParam('login')=='true')
         {
             $response = $next($request, $response);
             return $response;
