@@ -40,8 +40,6 @@ class MWComanda
     
     function MWVerificarToken(Request $request,Response $response,$next)
     {
-        var_dump($request->getUri()->getPath());
-        die();
         if($request->getUri()->getPath()=='/Pedidos/TiempoEstimado' || starts_with($request->getUri()->getPath(), '/Empleados/') && $request->getMethod()=='GET'&&$request->getQueryParam('login')=='true')
         {
             $response = $next($request,$response);
