@@ -40,7 +40,7 @@ class MWComanda
     
     function MWVerificarToken(Request $request,Response $response,$next)
     {
-        if($request->getUri()->getPath()=='/Pedidos/TiempoEstimado' || starts_with($request->getUri()->getPath(), '/Empleados/') && $request->getMethod()=='GET'&&$request->getQueryParam('login')=='true')
+        if(starts_with($request->getUri()->getPath(),'/Pedidos/TiempoEstimado') || starts_with($request->getUri()->getPath(), '/Empleados/') && $request->getMethod()=='GET'&&$request->getQueryParam('login')=='true')
         {
             $response = $next($request,$response);
             return $response;
@@ -60,7 +60,7 @@ class MWComanda
 
     function MWVerificarCredenciales(Request $request,Response $response,$next)
     {
-        if($request->getUri()->getPath()=='/Pedidos/TiempoEstimado' || starts_with($request->getUri()->getPath(), '/Empleados/') && $request->getMethod()=='GET'&&$request->getQueryParam('login')=='true')
+        if(starts_with($request->getUri()->getPath(),'/Pedidos/TiempoEstimado' || starts_with($request->getUri()->getPath(), '/Empleados/') && $request->getMethod()=='GET'&&$request->getQueryParam('login')=='true'))
         {
             $response = $next($request,$response);
             return $response;
@@ -76,7 +76,7 @@ class MWComanda
         switch($data->tipo)
         {
             case "administrador":
-            if($request->getUri()->getPath()=='/Empleados/'|| starts_with($request->getUri()->getPath(),'/Empleados/')|| starts_with($request->getUri()->getPath(), '/Registros/')||starts_with($request->getUri()->getPath(), '/Menu/') || starts_with($request->getUri()->getPath(),'/Mesa/') || starts_with($request->getUri()->getPath(),'/Consultas/' ))
+            if(starts_with($request->getUri()->getPath(),'/Empleados/'|| starts_with($request->getUri()->getPath(),'/Empleados/')|| starts_with($request->getUri()->getPath(), '/Registros/')||starts_with($request->getUri()->getPath(), '/Menu/') || starts_with($request->getUri()->getPath(),'/Mesa/') || starts_with($request->getUri()->getPath(),'/Consultas/' )))
             {
                 $response = $next($request,$response);
             }
@@ -111,8 +111,8 @@ class MWComanda
             break;
 
             case "socio":
-            if($request->getUri()->getPath()=='Alimentos/'||$request->getUri()->getPath()=='/Menu/'|| $request->getUri()->getPath()=='/Pedidos/' && $request->getMethod()=="GET" || $request->getUri()->getPath()=='/Mesa/' || $request->getUri()->getPath()=='/Mesa/Cierre' || $request->getUri()->getPath()=='/Mesa/Cobro'
-            || $request->getUri()->getPath() == 'Consultas/ImportesTotales' )
+            if(starts_with($request->getUri()->getPath(),'/Alimentos/')||starts_with($request->getUri()->getPath(),'/Menu/')|| starts_with($request->getUri()->getPath(),'/Pedidos/') && $request->getMethod()=="GET" || starts_with($request->getUri()->getPath(),'/Mesa/') || starts_with($request->getUri()->getPath(),'/Mesa/Cierre') || starts_with($request->getUri()->getPath(),'/Mesa/Cobro')
+            || $request->getUri()->getPath() == 'Consultas/ImportesTotales')
             {
                 
                 $response = $next($request,$response);
@@ -159,7 +159,7 @@ class MWComanda
     {
         $atributos = $request->getParsedBody();
         $empleado = new empleado;
-        if($request->getUri()->getPath()=='/Empleados/Modificar')
+        if(starts_with($request->getUri()->getPath(),'/Empleados/Modificar'))
         {
             $empleado = empleado::find($atributos["id"]);
         }
@@ -323,16 +323,16 @@ class MWComanda
         $id_mesa = $request->getParsedBody()["n_mesa"];
         if(mesa::find($id_mesa)!=NULL)
         {
-            if((mesa::find($id_mesa))->estado=="cerrada" && $request->getUri()->getPath()=='Pedidos/')
+            if((mesa::find($id_mesa))->estado=="cerrada" && starts_with($request->getUri()->getPath(),'/Pedidos/'))
             {
                 $response = $next($request,$response);
             }
-            else if((mesa::find($id_mesa))->estado=="con cliente comiendo" && $request->getUri()->getPath()=='/Mesa/Cobro')
+            else if((mesa::find($id_mesa))->estado=="con cliente comiendo" && starts_with($request->getUri()->getPath(),'/Mesa/Cobro/'))
             {
                 $request = $request->withAttribute('id_mesa',$id_mesa);
                 $response = $next($request,$response);
             }
-            else if((mesa::find($id_mesa))->estado=="con cliente pagando" && $request->getUri()->getPath()=='/Mesa/Cierre')
+            else if((mesa::find($id_mesa))->estado=="con cliente pagando" && starts_with($request->getUri()->getPath(),'/Mesa/Cierre/'))
             {
                 $request = $request->withAttribute('id_mesa',$id_mesa);
                 $response = $next($request,$response);

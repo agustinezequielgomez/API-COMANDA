@@ -47,8 +47,6 @@ class menu extends \Illuminate\Database\Eloquent\Model
         $extension = explode(".",$nombreFoto);
         $extension = array_reverse($extension)[0];
         $titulo = ("Menu_".$this->nombre."_".$this->tipo.'.'.$extension);
-        $path .= $titulo;
-        $archivos["foto"]->moveTo($path);
         return $titulo;
     }
 }
