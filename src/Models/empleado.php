@@ -65,8 +65,6 @@ class empleado extends \Illuminate\Database\Eloquent\Model
         $extension = explode(".",$nombreFoto);
         $extension = array_reverse($extension)[0];
         $titulo = ("Empleado_".$this->nombre."_".$this->tipo.'.'.$extension);
-        // $path .= $titulo;
-        // $archivos["foto"]->moveTo($path);
         return $titulo;
     }
 }

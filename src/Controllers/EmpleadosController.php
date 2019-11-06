@@ -27,7 +27,7 @@ class EmpleadosController
         $empleado->path = $empleado->subirFoto($request->getUploadedFiles(), './public_html/img/Empleados/');
         $empleado->tipo = "cliente";
         $empleado->save();
-        $response->withJson("Empleado dado de alta exitosamente", 200);
+        $response->withJson($empleado->path, 200);
         return $response;
     }
 
