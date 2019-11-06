@@ -27,8 +27,7 @@ class EmpleadosController
         $empleado->path = $empleado->subirFoto($request->getUploadedFiles(), './public_html/img/Empleados/');
         $empleado->tipo = "cliente";
         $empleado->save();
-        $response->withJson($empleado->path, 200);
-        return $response;
+        return $response->withJson($empleado->path, 200);
     }
 
     function ModificarUno(Request $request,Response $response, $args)
