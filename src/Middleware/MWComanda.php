@@ -100,7 +100,7 @@ class MWComanda
             break;
 
             case "mozo":
-            if(starts_with($request->getUri()->getPath(),'/Pedidos/') && $request->getUri()->getPath()!='/Pedidos/TiempoEstimado' || starts_with($request->getUri()->getPath(), '/Menu/') && $request->getMethod() == "GET" || starts_with($request->getUri()->getPath(), '/Mesa/') && $request->getMethod() == "GET")
+            if($request->getUri()->getPath() == 'Pedidos/' || starts_with($request->getUri()->getPath(),'/Pedidos/') && $request->getUri()->getPath()!='/Pedidos/TiempoEstimado' || starts_with($request->getUri()->getPath(), '/Menu/') && $request->getMethod() == "GET" || starts_with($request->getUri()->getPath(), '/Mesa/') && $request->getMethod() == "GET")
             {
                 $response = $next($request,$response);
             }

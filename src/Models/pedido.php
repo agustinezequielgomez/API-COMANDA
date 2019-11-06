@@ -51,8 +51,6 @@ class pedido extends \Illuminate\Database\Eloquent\Model
         $extension = explode(".",$nombreFoto);
         $extension = array_reverse($extension)[0];
         $titulo = ("Mesa_".$this->n_mesa."_Pedido_".$this->codigo_pedido.'.'.$extension);
-        $path .= $titulo;
-        $archivos["foto"]->moveTo($path);
         return $titulo;
     }
 

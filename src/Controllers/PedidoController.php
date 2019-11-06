@@ -35,7 +35,7 @@ class PedidoController
         $request = $request->withAttributes(["id_mesa"=>$atributos["n_mesa"],"estado"=>"con cliente esperando pedido",'id_pedido'=>$pedido->id]);
         MesaController::ActualizarEstado($request,$response,$args);
         alimento::cargarAlimentos($alimentos,$pedido);
-        return $response->withJson($pedido->codigo_pedido, 200);
+        return $response->withJson(["codigo" => $pedido->codigo_pedido, "foto" => $pedido->foto], 200, JSON_FORCE_OBJECT);
     }
 
     function ConsultarTiempoEstimado(Request $request,Response $response, $args)
