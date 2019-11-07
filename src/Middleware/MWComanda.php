@@ -76,7 +76,9 @@ class MWComanda
         switch($data->tipo)
         {
             case "administrador":
-            if(starts_with($request->getUri()->getPath(),'/Empleados/'|| starts_with($request->getUri()->getPath(),'/Empleados/')|| starts_with($request->getUri()->getPath(), '/Registros/')||starts_with($request->getUri()->getPath(), 'Menu/') || starts_with($request->getUri()->getPath(),'/Mesa/') || starts_with($request->getUri()->getPath(),'/Consultas/' )))
+            var_dump($request->getUri()->getPath());
+            die();
+            if(starts_with($request->getUri()->getPath(),'/Empleados/'|| starts_with($request->getUri()->getPath(),'/Empleados/')|| starts_with($request->getUri()->getPath(), '/Registros/')||starts_with($request->getUri()->getPath(), '/Menu/') || starts_with($request->getUri()->getPath(),'/Mesa/') || starts_with($request->getUri()->getPath(),'/Consultas/' )))
             {
                 $response = $next($request,$response);
             }
