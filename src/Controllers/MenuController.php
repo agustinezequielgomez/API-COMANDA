@@ -18,7 +18,7 @@ class MenuController
         $menu->precio = $request->getParsedBody()["precio"];
         $menu->path = $menu->subirFoto($request->getUploadedFiles(), "./public_html/img/Menu/");
         $menu->save();
-        return $response->withJson("Alimento agregado al menu exitosamente", 200);
+        return $response->withJson($menu->path, 200);
     }
 
     public function ModificarUno(Request $request,Response $response,$args)
