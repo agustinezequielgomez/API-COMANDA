@@ -41,7 +41,7 @@ class AlimentoController
             $request = $request->withAttribute('estado',"Listo para servir");
             PedidoController::actualizarEstadoPedido($request,$response,$args);
         }
-        return $response->getBody()->write("<br>Alimento preparado");
+        return $response->withJson("Alimento preparado", 200);
     }
 
     static function cancelarAlimentos(Request $request, Response $response, array $args) //Pasar alimentos a "Cancelar"
