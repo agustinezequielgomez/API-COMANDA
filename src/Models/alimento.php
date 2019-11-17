@@ -1,5 +1,7 @@
 <?php
 namespace Models;
+
+use DateTime;
 use Models\empleado;
 class alimento extends \Illuminate\Database\Eloquent\Model
 {
@@ -15,6 +17,8 @@ class alimento extends \Illuminate\Database\Eloquent\Model
             foreach($alimentos[$tipoAlimento] as $alimentoPedido)
             {
                 $alimento = new alimento(["id_pedido"=>$pedido->id,"tipo"=>$tipoAlimento,"nombre_alimento"=>$alimentoPedido,"estado"=>"Pendiente"]);
+                $alimento->created_at = new DateTime('now');
+                $alimento->updated_at = new DateTime('now');
                 $alimento->save();
             }            
         }
