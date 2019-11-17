@@ -43,6 +43,7 @@ class alimento extends \Illuminate\Database\Eloquent\Model
             break;
 
             case "socio":
+            case "mozo":
             $respuesta = $alimento::all();
             break;
         }
