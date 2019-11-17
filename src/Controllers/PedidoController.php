@@ -85,7 +85,7 @@ class PedidoController
 
     function TraerTodos(Request $request,Response $response, $args)
     {
-        return $response->withJson((pedido::all())->toJson(), 200);
+        return $response->withJson(pedido::all(), 200);
     }
 
     static function entregarPedido(Request $request,Response $response, $args)
