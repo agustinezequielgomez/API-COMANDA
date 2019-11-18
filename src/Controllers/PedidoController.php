@@ -18,7 +18,7 @@ class PedidoController
     {
         $id_pedido = $request->getAttribute("id_pedido");
         $id_mesa = pedido::find($id_pedido)->get();
-        var_dump($id_pedido, $id_mesa->n_mesa);
+        var_dump($id_pedido, $id_mesa);
         die();
         pedido::where('id',$id_pedido)->update(['estado'=>'Cancelado']);
         $request = $request->withAttribute('id_pedido',$id_pedido);
