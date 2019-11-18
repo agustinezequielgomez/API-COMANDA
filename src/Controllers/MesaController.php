@@ -39,7 +39,7 @@ class MesaController
         return $response->withJson("Cobro realizado con exito", 200);
     }
 
-    function cierreMesa(Request $request,Response $response, $args)
+    static function cierreMesa(Request $request,Response $response, $args)
     {
         $id = $request->getAttribute('id_mesa');
         mesa::where('id',$id)->update(["estado"=>"cerrada","id_pedido"=>0]);

@@ -20,6 +20,8 @@ class PedidoController
         pedido::where('id',$id_pedido)->update(['estado'=>'Cancelado']);
         $request = $request->withAttribute('id_pedido',$id_pedido);
         AlimentoController::cancelarAlimentos($request,$response,$args);
+        $request = $request->withAttribute('id_mesa', pedido::select('n_mesa')->where('id', $id_pedido)->get());
+        MesaController::cierreMesa($request, $response, $args);
         return $response->withJson("Pedido cancelado exitosamente", 200);
     }
     
