@@ -20,7 +20,6 @@ class AlimentoController
         {
             if($alimento->id_pedido == $id_pedido)
             {
-                // $alimento->updated_at = new DateTime('now');
                 $alimento->update(["id_empleado" => $empleado->id,"estado"=>"En preparacion","tiempo_comienzo"=>date('H:i:s'),"tiempo_estimado"=>$tiempo_estimado]);
             }
         }

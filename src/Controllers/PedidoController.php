@@ -50,7 +50,7 @@ class PedidoController
         else if($ahora<$tiempo_estimado)
         {
             $interval = $tiempo_estimado->diff($ahora);
-            return $response->withJson($interval->format('%i'), 200);
+            return $response->withJson($interval, 200);
         }
         else
         {
