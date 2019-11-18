@@ -121,6 +121,17 @@ class MWComanda
             {
                 return $response->withJson("No posees las credenciales necesarias para estas acciones", 403);
             }
+            break;
+
+            case "cliente":
+            if(starts_with($request->getUri()->getPath(),'/Pedidos/TiempoEstimado'))
+            {
+                $response = $next($request,$response);
+            }
+            else
+            {
+                return $response->withJson("No posees las credenciales necesarias para estas acciones", 403);
+            }
         }
         return $response;
     }
@@ -279,8 +290,6 @@ class MWComanda
 
     function MWValidarCodigoDePedidoExistente(Request $request,Response $response,$next)
     {
-        var_dump("DALE");
-        die();
         $codigo_de_pedido = $request->getParam("codigo_de_pedido");
         $codgio_mesa = $request->getParam("codigo_mesa");
         if(((mesa::where('codigo_identificacion',$codgio_mesa))->count())>0)
