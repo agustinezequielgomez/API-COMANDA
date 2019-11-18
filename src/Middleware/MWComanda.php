@@ -60,7 +60,7 @@ class MWComanda
 
     function MWVerificarCredenciales(Request $request,Response $response,$next)
     {
-        if(starts_with($request->getUri()->getPath(),'/Pedidos/TiempoEstimado' || starts_with($request->getUri()->getPath(), '/Empleados/') && $request->getMethod()=='GET'&&$request->getQueryParam('login')=='true'))
+        if(starts_with($request->getUri()->getPath(),'/Pedidos/TiempoEstimado') || starts_with($request->getUri()->getPath(), '/Empleados/') && $request->getMethod()=='GET'&&$request->getQueryParam('login')=='true')
         {
             $response = $next($request,$response);
             return $response;
@@ -123,15 +123,15 @@ class MWComanda
             }
             break;
 
-            case "cliente":
-            if(starts_with($request->getUri()->getPath(),'/Pedidos/TiempoEstimado'))
-            {
-                $response = $next($request,$response);
-            }
-            else
-            {
-                return $response->withJson("No posees las credenciales necesarias para estas acciones", 403);
-            }
+            // case "cliente":
+            // if(starts_with($request->getUri()->getPath(),'/Pedidos/TiempoEstimado'))
+            // {
+            //     $response = $next($request,$response);
+            // }
+            // else
+            // {
+            //     return $response->withJson("No posees las credenciales necesarias para estas acciones", 403);
+            // }
         }
         return $response;
     }
