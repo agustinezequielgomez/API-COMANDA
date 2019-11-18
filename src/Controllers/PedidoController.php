@@ -17,8 +17,8 @@ class PedidoController
     function CancelarUno(Request $request, Response $response, $args)
     {
         $id_pedido = $request->getAttribute("id_pedido");
-        $id_mesa = pedido::where('id', $id_pedido)->get()->n_mesa;
-        var_dump($id_mesa);
+        $id_mesa = pedido::where('id', $id_pedido)->get();
+        var_dump($id_pedido, $id_mesa->n_mesa);
         die();
         pedido::where('id',$id_pedido)->update(['estado'=>'Cancelado']);
         $request = $request->withAttribute('id_pedido',$id_pedido);
