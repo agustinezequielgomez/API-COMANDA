@@ -17,14 +17,9 @@ class PedidoController
     function CancelarUno(Request $request, Response $response, $args)
     {
         $id_pedido = $request->getAttribute("id_pedido");
-        $id_mesa = pedido::find($id_pedido)->get();
-        var_dump($id_pedido, $id_mesa["n_mesa"]);
-        die();
         pedido::where('id',$id_pedido)->update(['estado'=>'Cancelado']);
         $request = $request->withAttribute('id_pedido',$id_pedido);
         AlimentoController::cancelarAlimentos($request,$response,$args);
-        $request = $request->withAttribute('id_mesa', $id_mesa);
-        MesaController::cierreMesa($request, $response, $args);
         return $response->withJson("Pedido cancelado exitosamente", 200);
     }
     
