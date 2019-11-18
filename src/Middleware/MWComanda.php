@@ -279,7 +279,6 @@ class MWComanda
 
     function MWValidarCodigoDePedidoExistente(Request $request,Response $response,$next)
     {
-        echo("AAAA");
         $codigo_de_pedido = $request->getParam("codigo_de_pedido");
         $codgio_mesa = $request->getParam("codigo_mesa");
         if(((mesa::where('codigo_identificacion',$codgio_mesa))->count())>0)

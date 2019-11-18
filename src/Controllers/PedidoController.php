@@ -40,6 +40,7 @@ class PedidoController
 
     function ConsultarTiempoEstimado(Request $request,Response $response, $args)
     {
+        echo("AAAAAAAA");
         $pedido = $request->getAttribute('pedido');
         $tiempo_estimado = \DateTime::createFromFormat('H:i:s',$pedido->tiempo_estimado);
         $ahora = \DateTime::createFromFormat('H:i:s',date('H:i:s'));
