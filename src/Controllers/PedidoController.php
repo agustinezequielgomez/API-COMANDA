@@ -43,18 +43,18 @@ class PedidoController
         $pedido = $request->getAttribute('pedido');
         $tiempo_estimado = \DateTime::createFromFormat('H:i:s',$pedido->tiempo_estimado);
         $ahora = \DateTime::createFromFormat('H:i:s',date('H:i:s'));
-        if($pedido->tiempo_estimado == '00:00:00')
+        if($pedido->estado != 'En preparacion')
         {
-            return $response->withJson("Su pedido aun no comenzo a prepararse", 200);
+            return $response->withJson("Su pedido aun no comenzo a prepararse", 400);
         }
         else if($ahora<$tiempo_estimado)
         {
             $interval = $tiempo_estimado->diff($ahora);
-            return $response->withJson("Faltan ".$interval->format('%i')." minutos para que tu pedido este listo!", 200);
+            return $response->withJson($interval->format('%i'), 200);
         }
         else
         {
-            return $response->withJson("Tu pedido va a estar listo en breve!", 200);
+            return $response->withJson("Tu pedido va a estar listo en breve!", 400);
         }
         return $response;
     }
