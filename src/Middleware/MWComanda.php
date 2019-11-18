@@ -40,8 +40,6 @@ class MWComanda
     
     function MWVerificarToken(Request $request,Response $response,$next)
     {
-        var_dump(starts_with($request->getUri()->getPath(),'/Pedidos/TiempoEstimado'));
-        die();
         if(starts_with($request->getUri()->getPath(),'/Pedidos/TiempoEstimado') || starts_with($request->getUri()->getPath(), '/Empleados/') && $request->getMethod()=='GET'&&$request->getQueryParam('login')=='true')
         {
             $response = $next($request,$response);
@@ -281,6 +279,7 @@ class MWComanda
 
     function MWValidarCodigoDePedidoExistente(Request $request,Response $response,$next)
     {
+        echo("AAAA");
         $codigo_de_pedido = $request->getParam("codigo_de_pedido");
         $codgio_mesa = $request->getParam("codigo_mesa");
         if(((mesa::where('codigo_identificacion',$codgio_mesa))->count())>0)
