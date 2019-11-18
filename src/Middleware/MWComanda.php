@@ -123,15 +123,15 @@ class MWComanda
             }
             break;
 
-            // case "cliente":
-            // if(starts_with($request->getUri()->getPath(),'/Pedidos/TiempoEstimado'))
-            // {
-            //     $response = $next($request,$response);
-            // }
-            // else
-            // {
-            //     return $response->withJson("No posees las credenciales necesarias para estas acciones", 403);
-            // }
+            case "cliente":
+            if(starts_with($request->getUri()->getPath(), '/Menu/') && $request->getMethod() == "GET" )
+            {
+                $response = $next($request,$response);
+            }
+            else
+            {
+                return $response->withJson("No posees las credenciales necesarias para estas acciones", 403);
+            }
         }
         return $response;
     }
