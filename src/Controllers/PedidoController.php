@@ -93,7 +93,7 @@ class PedidoController
         $id = $request->getAttribute('id_pedido');
         pedido::where('id',$id)->update(["estado"=>"Entregado","pedido_entregado"=>date('H:i:s')]);
         $request = $request->withAttributes(["id_mesa"=>(pedido::select('n_mesa')->where('id',$id)->get())[0]->n_mesa,"estado"=>"con cliente comiendo",'id_pedido'=>$id]);
-        mesaApi::ActualizarEstado($request,$response,$args);
+        MesaController::ActualizarEstado($request,$response,$args);
         return $response->withJson("Pedido entregado con exito", 200);
     }
 }
