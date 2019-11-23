@@ -333,7 +333,7 @@ class MWComanda
 
     function MWValidarMesa(Request $request,Response $response,$next)
     {
-        var_dump($request->getUri()->getPath());
+        var_dump(starts_with($request->getUri()->getPath(),'/Mesa/Cobro/'));
         $id_mesa = $request->getParsedBody()["n_mesa"];
         if(mesa::find($id_mesa)!=NULL)
         {
