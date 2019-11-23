@@ -6,7 +6,10 @@ return function(App $app)
 {
     $app->group('/Rate',function()
     {
-        $this->post('/',rateApi::class.':EnviarPuntuacion')->add(MWComanda::class.':MWValidarPuntuaciones')->add(MWComanda::class.':MWValidarMesaRate');
+        $this->post('/', RateController::class.':EnviarPuntuacion')->add(MWComanda::class.':MWValidarPuntuaciones')->add(MWComanda::class.':MWValidarMesaRate');
+        $this->get('/', function(){
+            return true;
+        })->add(MWComanda::class.':MWValidarMesaRate');
     });
 }
 ?>

@@ -333,7 +333,6 @@ class MWComanda
 
     function MWValidarMesa(Request $request,Response $response,$next)
     {
-        var_dump(starts_with($request->getUri()->getPath(),'/Mesa/Cobro'));
         $id_mesa = $request->getParsedBody()["n_mesa"];
         if(mesa::find($id_mesa)!=NULL)
         {
@@ -374,12 +373,12 @@ class MWComanda
             }
             else
             {
-                return $response->withJson("Debe pagar el pedido para poder puntuar la mesa", 403);
+                return $response->withJson("Debe pagar el pedido para poder puntuar la mesa", 401);
             }
         }
         else
         {
-            return $response->withJson("el codigo de mesa ingresado no es correcto", 404);
+            return $response->withJson("El codigo de mesa ingresado no es correcto", 404);
         }
         return $response;
     }
