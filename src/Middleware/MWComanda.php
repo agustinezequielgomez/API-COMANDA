@@ -333,7 +333,7 @@ class MWComanda
 
     function MWValidarMesa(Request $request,Response $response,$next)
     {
-        var_dump(starts_with($request->getUri()->getPath(),'/Mesa/Cobro/'));
+        var_dump(starts_with($request->getUri()->getPath(),'/Mesa/Cobro'));
         $id_mesa = $request->getParsedBody()["n_mesa"];
         if(mesa::find($id_mesa)!=NULL)
         {
@@ -341,12 +341,12 @@ class MWComanda
             {
                 $response = $next($request,$response);
             }
-            else if((mesa::find($id_mesa))->estado=="con cliente comiendo" && starts_with($request->getUri()->getPath(),'/Mesa/Cobro/'))
+            else if((mesa::find($id_mesa))->estado=="con cliente comiendo" && starts_with($request->getUri()->getPath(),'/Mesa/Cobro'))
             {
                 $request = $request->withAttribute('id_mesa',$id_mesa);
                 $response = $next($request,$response);
             }
-            else if((mesa::find($id_mesa))->estado=="con cliente pagando" && starts_with($request->getUri()->getPath(),'/Mesa/Cierre/'))
+            else if((mesa::find($id_mesa))->estado=="con cliente pagando" && starts_with($request->getUri()->getPath(),'/Mesa/Cierre'))
             {
                 $request = $request->withAttribute('id_mesa',$id_mesa);
                 $response = $next($request,$response);
