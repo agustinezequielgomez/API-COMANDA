@@ -112,7 +112,7 @@ class MWComanda
 
             case "socio":
             if(starts_with($request->getUri()->getPath(),'/Alimentos/')||starts_with($request->getUri()->getPath(),'/Menu/')|| starts_with($request->getUri()->getPath(),'/Pedidos/') && $request->getMethod()=="GET" || starts_with($request->getUri()->getPath(),'/Mesa/') || starts_with($request->getUri()->getPath(),'/Mesa/Cierre') || starts_with($request->getUri()->getPath(),'/Mesa/Cobro')
-            || $request->getUri()->getPath() == 'Consultas/ImportesTotales')
+            || starts_with($request->getUri()->getPath(), 'Consultas/ImportesTotales'))
             {
                 
                 $response = $next($request,$response);
