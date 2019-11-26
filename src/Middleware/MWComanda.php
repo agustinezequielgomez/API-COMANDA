@@ -364,7 +364,12 @@ class MWComanda
 
     function MWValidarMesaRate(Request $request,Response $response,$next)
     {
-        $codigo_identificacion = $request->getParsedBody()["codigo_identificacion"];
+        if ($request->getMethod() === "POST")
+        {
+            $codigo_identificacion = $request->getParsedBody()["codigo_identificacion"];
+        } else {
+            $codigo_identificacion = ($request->getAttribute('route'))->getArgument('mesa');
+        }
         if((mesa::where('codigo_identificacion',$codigo_identificacion)->get())[0]!=NULL)
         {
             if((mesa::where('codigo_identificacion',$codigo_identificacion)->get())[0]->estado == "con cliente pagando")
