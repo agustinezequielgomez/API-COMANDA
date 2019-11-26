@@ -18,5 +18,10 @@ class RateController
         $rate->save();
         return $response->withJson("Puntuaciones guardadas. Gracias por ayudarnos a mejorar!", 200);
     }
+
+    function dummyFunction(Request $request, Response $response, array $args) 
+    {
+        return $response->withJson(true, 200);
+    }
 }
 ?>

@@ -367,8 +367,10 @@ class MWComanda
         if ($request->getMethod() === "POST")
         {
             $codigo_identificacion = $request->getParsedBody()["codigo_identificacion"];
-        } else {
-            $codigo_identificacion = ($request->getAttribute('route'))->getArgument('mesa');
+        } 
+        else 
+        {
+            $codigo_identificacion = $request->getParam('mesa');
         }
         if((mesa::where('codigo_identificacion',$codigo_identificacion)->get())[0]!=NULL)
         {

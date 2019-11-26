@@ -7,7 +7,7 @@ use Helpers\AppConfig;
 
 require __DIR__.'/vendor/autoload.php';
 
-$config = ['settings' => ['displayErrorDetails' => true]];
+$config = ['settings' => ['displayErrorDetails' => true, 'determineRouteBeforeAppMiddleware' => true]];
 
 $app = new \Slim\App($config);
 
